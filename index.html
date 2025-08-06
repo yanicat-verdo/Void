@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Void</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Void</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      height: 100vh;
+      padding: 0;
       background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
+      height: 100%;
+      width: 100%;
     }
 
-    .blackhole {
-      width: 300px;
-      height: 300px;
+    #blackhole {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      margin: -100px 0 0 -100px;
+      background: radial-gradient(circle, black 30%, #222 70%, transparent 80%);
       border-radius: 50%;
-      background: radial-gradient(circle at center, #000, #111 40%, #000 60%);
-      box-shadow: 0 0 60px 30px rgba(0,0,0,0.6);
-      animation: spin 20s linear infinite;
+      box-shadow: 0 0 60px 30px rgba(0, 0, 0, 0.8);
+      animation: pulse 3s infinite ease-in-out;
     }
 
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .whispers {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-family: monospace;
+      font-size: 14px;
+      opacity: 0.4;
     }
   </style>
 </head>
 <body>
-  <div class="blackhole"></div>
+  <div id="blackhole"></div>
+  <div class="whispers">Welcome to the void...</div>
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_c06e037b8e.mp3?filename=night-ambient-140106.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 </body>
 </html>
